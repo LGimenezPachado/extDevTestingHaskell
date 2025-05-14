@@ -1,0 +1,7 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "extDevTesting:lib"
+
+    - path: "./test"
+      component: "extDevTesting:test:extDevTesting-test"
