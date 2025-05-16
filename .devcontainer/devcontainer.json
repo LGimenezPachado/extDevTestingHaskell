@@ -1,0 +1,12 @@
+{
+  "name": "Haskell Codespace",
+  "image": "fpco/haskell-dev:latest",
+"customizations": {
+  "vscode": {
+    "settings": {
+      "editor.tabSize": 4
+    }
+  }
+},
+  "postCreateCommand": "cabal update"
+}
