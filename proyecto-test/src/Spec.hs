@@ -5,6 +5,6 @@ import Test.Hspec
 
 correrTests :: IO ()
 correrTests = hspec $ do
-  {-describe "Test de ejemplo" $ do
-    it "El pdepreludat se instaló correctamente" $ do
-      2* 1 `shouldBe` 2-}
+  describe "f" $ do
+    it "devuelve la paridad de los números del 1 al 4" $ do
+      f `shouldBe` [False, True, False, True]
