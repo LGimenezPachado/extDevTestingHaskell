@@ -1,12 +1,15 @@
 {
-  "name": "Haskell Dev",
-  "image": "mcr.microsoft.com/devcontainers/haskell:latest",
+  "name": "Haskell Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "ghc --version && stack --version",
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.shell.linux": "/bin/bash"
       }
     }
-  },
-  "postCreateCommand": "cabal update"
+  }
 }
