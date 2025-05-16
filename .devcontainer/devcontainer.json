@@ -8,10 +8,5 @@
       }
     }
   },
-  "features": {
-    "ghcup": {
-      "version": "latest"
-    }
-  },
-  "postCreateCommand": "cabal update && cabal build all"
+  "postCreateCommand": "cabal update"
 }
