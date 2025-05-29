@@ -15,6 +15,17 @@ correrTests = hspec $ do
     it "Suma 4 a una lista" $ 
       fDeMap2 `shouldBe` [12, 11, 10]
 
+  describe "mostrarEnMayusculas" $ do
+    it "convierte hola en  \"HOLA\"/" $
+      mostrarEnMayusculas "hola" `shouldBe`  "HOLA"
+
+    it "convierte HOLA en  \"HOLA\"/" $
+      mostrarEnMayusculas "HOLA" `shouldBe`  "HOLA"
+    
+    it "convierte Hola en  \"HOLA\"/" $ 
+      mostrarEnMayusculas "Hola" `shouldBe`  "HOLA"
+
+
   describe "longitudesSinPuntuacion" $ do
     it "devuelve longitudes sin contar puntuación" $
       longitudesSinPuntuacion ["hola,", "qué", "tal!"] `shouldBe` [4, 3, 3]
@@ -207,3 +218,40 @@ correrTests = hspec $ do
 
     it "zips when one list is empty" $
       myZipWith (++) ["a", "b"] [] `shouldBe` ([] :: [String])
+
+  describe "cuadradosPares" $ do
+    it "devuelve los cuadrados de los números pares" $
+      cuadradosPares [1, 2, 3, 4, 5, 6] `shouldBe` [4, 16, 36]
+
+    it "devuelve lista vacía si no hay pares" $
+      cuadradosPares [1, 3, 5] `shouldBe` []
+
+    it "devuelve lista vacía para lista vacía" $
+      cuadradosPares [] `shouldBe` []
+
+  describe "sumarVocales" $ do
+    it "suma las longitudes de palabras que empiezan con vocal" $
+      sumarVocales ["oso", "gato", "agua", "elefante"] `shouldBe` 15
+
+    it "ignora palabras que no empiezan con vocal" $
+      sumarVocales ["perro", "gato"] `shouldBe` 0
+
+    it "funciona con mezcla de mayúsculas" $
+      sumarVocales ["Oso", "Gato", "Agua", "Elefante"] `shouldBe` 15
+
+    it "devuelve 0 para lista vacía" $
+      sumarVocales [] `shouldBe` 0
+
+  describe "procesarTexto" $ do
+    it "procesa un texto quitando espacios, poniendo mayúsculas e invirtiendo" $
+      procesarTexto "hola mundo" `shouldBe` "ODNUMALOH"
+
+    it "procesa correctamente una cadena vacía" $
+      procesarTexto "" `shouldBe` ""
+
+    it "procesa solo espacios como cadena vacía" $
+      procesarTexto "   " `shouldBe` ""
+
+    it "funciona con una sola palabra" $
+      procesarTexto "hola" `shouldBe` "ALOH"
+

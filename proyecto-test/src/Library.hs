@@ -1,6 +1,7 @@
 module Library where
 import PdePreludat
 import Data.Foldable (maximumBy)
+import Data.Char (toUpper)
 
 --map tests [1]
 {-
@@ -14,6 +15,9 @@ fDeMap1 = map even [1, 2, 3, 4]
 
 fDeMap2 :: [Number]
 fDeMap2 = map (+4) [8, 7, 6]
+
+mostrarEnMayusculas :: String -> String
+mostrarEnMayusculas = map toUpper
 
 longitudesSinPuntuacion :: [String] -> [Number]
 longitudesSinPuntuacion = map (length . filter (`notElem` ".,;:!?"))
@@ -203,8 +207,20 @@ sumaElementoAElemento = zipWith (\x y -> x + y)
 mayoresQue :: [Number] -> [Number] -> [Bool]
 mayoresQue = zipWith (\x y -> x > y)
 
+--Funciones compuestas [9]
 
+cuadradosPares :: [Number] -> [Number]
+cuadradosPares = map (^2) . filter even
 
+empiezaConVocal :: String -> Bool
+empiezaConVocal (x:_) = x `elem` "aeiouAEIOU"
+empiezaConVocal _     = False
+
+sumarVocales :: [String] -> Number
+sumarVocales = sum . map length . filter empiezaConVocal
+
+procesarTexto :: String -> String
+procesarTexto = reverse . map toUpper . filter (/= ' ')
 
 
 
