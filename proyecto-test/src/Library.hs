@@ -63,8 +63,13 @@ filter p (x:xs)
   | otherwise = filter p xs
 -}
 --4.1
-fDeFilter :: [Number]
-fDeFilter = filter even [2, 3, 4, 5, 6]
+--Filtra pares
+fDeFilter :: [Number] -> [Number]
+fDeFilter = filter even 
+
+filtraVocales :: String -> String
+filtraVocales = filter (`elem` "aeiouAEIOU")
+
 
 --higher-order function tests [5]
 --5.1 (w/map)
@@ -209,6 +214,7 @@ mayoresQue = zipWith (\x y -> x > y)
 
 --Funciones compuestas [9]
 
+-- Separa los pares y los eleva al cuadrado
 cuadradosPares :: [Number] -> [Number]
 cuadradosPares = map (^2) . filter even
 
@@ -216,17 +222,24 @@ empiezaConVocal :: String -> Bool
 empiezaConVocal (x:_) = x `elem` "aeiouAEIOU"
 empiezaConVocal _     = False
 
+-- Cantidad de vocales
 sumarVocales :: [String] -> Number
 sumarVocales = sum . map length . filter empiezaConVocal
 
+-- Quita los espacios, pone todo en mayúscula e invierte el orden
 procesarTexto :: String -> String
 procesarTexto = reverse . map toUpper . filter (/= ' ')
 
+--Mezclas/DTP [10]
+sumaDeCuadradosPares :: [Number] -> [Number] ->[Number]
+sumaDeCuadradosPares = \xs ys -> sumaElementoAElemento (cuadradosPares xs) (cuadradosPares ys)
 
+-- Procesa el texto de esas 3 maneras y verifica si empieza con vocal
+vocalTextoProcesado :: String -> Bool
+vocalTextoProcesado = empiezaConVocal.procesarTexto
 
-
-
-
+cantidadLetrasPar :: String -> Bool
+cantidadLetrasPar = esPar. length
 
 
 

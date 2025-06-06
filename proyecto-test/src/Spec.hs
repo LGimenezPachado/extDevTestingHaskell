@@ -70,8 +70,18 @@ correrTests = hspec $ do
   --4.1
   describe "fDeFilter" $ do
     it "Filtra los números pares de la lista" $ 
-      fDeFilter `shouldBe` [2,4,6]
+      fDeFilter [2, 3, 4, 5, 6] `shouldBe` [2,4,6]
 
+    it "Filtra los números pares de la lista" $
+      fDeFilter [1, 1, 4, 8, 5] `shouldBe` [4, 8]
+
+  describe "filtraVocales" $ do
+    it "Devuelve vocales de una palabra" $
+      filtraVocales "Casa" `shouldBe` "aa"
+
+    it "Devuelve todas las vocales de una palabra" $
+      filtraVocales "Murcielago" `shouldBe` "uieao"
+      
   -- HoF tests [5]
   --5.1 (w/map)
   describe "listaDeFunciones" $ do
@@ -255,3 +265,19 @@ correrTests = hspec $ do
     it "funciona con una sola palabra" $
       procesarTexto "hola" `shouldBe` "ALOH"
 
+  --Mezclas
+  describe "sumaDeCuadradosPares" $ do
+    it "Suma de todos los cuadrados pares de la lista" $
+      sumaDeCuadradosPares [2,3,4,5,6,7,8] [4,7,8,9,10] `shouldBe` [20,80,136]
+  
+  describe "vocalTextoProcesado" $ do
+    it "Verifica si el texto procesado comienza con vocal" $
+      "CARA" `shouldSatisfy` vocalTextoProcesado
+
+  describe "cantidadLetrasPar" $ do
+    it "verifica si la palabra Cara tiene una cantidadpar de letras" $
+      "Cara" `shouldSatisfy` cantidadLetrasPar
+    it "verifica si la palabra Fiebre tiene una cantidadpar de letras" $
+      "Fiebre" `shouldSatisfy` cantidadLetrasPar
+    it "verifica si la palabra Luz tiene una cantidadpar de letras" $
+      "Luz" `shouldNotSatisfy` cantidadLetrasPar
