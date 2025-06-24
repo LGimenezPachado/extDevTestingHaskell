@@ -281,3 +281,55 @@ correrTests = hspec $ do
       "Fiebre" `shouldSatisfy` cantidadLetrasPar
     it "verifica si la palabra Luz tiene una cantidadpar de letras" $
       "Luz" `shouldNotSatisfy` cantidadLetrasPar
+  
+  describe "esMultiploDeTres" $ do
+    it "verifica si un numero es multiplo de 3" $
+      6 `shouldSatisfy` esMultiploDeTres
+    it "verifica si un numero es multiplo de 3" $
+      4 `shouldNotSatisfy` esMultiploDeTres
+    it "verifica si un numero es multiplo de 3" $
+      1 `shouldNotSatisfy` esMultiploDeTres
+  
+  describe "esMultiploDe" $ do
+    it "verifica si un número es múltiplo del segundo" $
+      6 `shouldSatisfy` esMultiploDe 3 
+
+    it "verifica si un número no es múltiplo del segundo" $
+      7 `shouldNotSatisfy` esMultiploDe 4  
+
+    it "verifica si un número es múltiplo del segundo" $
+      16 `shouldSatisfy` esMultiploDe 2 
+
+  
+  describe "cubo" $ do
+    it "devuelve el cubo de un numero" $
+      cubo 2 `shouldBe` 4
+    it "devuelve el cubo de un numero" $
+      cubo 12 `shouldBe` 144
+
+  describe "area" $ do
+    it "calcula area de rectangulo" $
+      area 3 4 `shouldBe` 12
+    it "calcula area de rectangulo" $
+      area 2 8 `shouldBe` 16
+
+  describe "esBisiesto" $ do
+    it "2000 es bisiesto (divisible por 400)" $
+      esBisiesto 2000 `shouldBe` True
+
+    it "1900 no es bisiesto (divisible por 100, no por 400)" $
+      esBisiesto 1900 `shouldBe` False
+
+    it "2024 es bisiesto (divisible por 4 y no por 100)" $
+      esBisiesto 2024 `shouldBe` True
+
+    it "2023 no es bisiesto (no divisible por 4)" $
+      esBisiesto 2023 `shouldBe` False
+
+  describe "celsiusToFahr" $ do
+    it "pasaje a fahrenheit" $
+      celsiusToFahr 0 `shouldBe` 32
+    it "pasaje a fahrenheit" $
+      celsiusToFahr 16 `shouldBe` 48
+
+    

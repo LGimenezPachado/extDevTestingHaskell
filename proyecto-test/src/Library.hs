@@ -241,6 +241,57 @@ vocalTextoProcesado = empiezaConVocal.procesarTexto
 cantidadLetrasPar :: String -> Bool
 cantidadLetrasPar = esPar. length
 
+ 
+-- -------------------------------------------------------------
+
+
+-- Básicos
+
+{-
+1. Definir la función esMultiploDeTres/1, que devuelve True si un número es múltiplo de 3, p.ej: 
+Main> esMultiploDeTres 9 
+True 
+-}
+
+esMultiploDeTres :: Number -> Bool
+esMultiploDeTres x = x `mod` 3 == 0
+
+{-
+2. Definir la función esMultiploDe/2, que devuelve True si el segundo es múltiplo del primero, p.ej. 
+Main> esMultiploDe 3 12
+True
+-}
+
+esMultiploDe :: Number -> Number -> Bool
+esMultiploDe x y = y `mod` x == 0
+
+
+-- 3. Definir la función cubo/1, devuelve el cubo de un número.
+
+cubo :: Number -> Number
+cubo x = x*x
+
+-- 4. Definir la función area/2, devuelve el área de un rectángulo a partir de su base y su altura.
+
+area :: Number -> Number -> Number
+area x y = x*y
+
+-- 5. Definir la función esBisiesto/1, indica si un año es bisiesto. (Un año es bisiesto si es divisible por 400 o es divisible por 4 pero no es divisible por 100) Nota: Resolverlo reutilizando la función esMultiploDe/2
+
+esBisiesto :: Number -> Bool
+esBisiesto año =
+  esMultiploDe 400 año || (esMultiploDe 4 año && not (esMultiploDe 100 año))
+
+
+-- 6. Definir la función celsiusToFahr/1, pasa una temperatura en grados Celsius a grados Fahrenheit.
+
+celsiusToFahr :: Number -> Number
+celsiusToFahr temp = temp + 32
+
+-- 7. Definir la función fahrToCelsius/1, la inversa de la anterior.
+
+-- 8. Definir la función haceFrioF/1, indica si una temperatura expresada en grados Fahrenheit es fría. Decimos que hace frío si la temperatura es menor a 8 grados Celsius. 
+
 
 
 
